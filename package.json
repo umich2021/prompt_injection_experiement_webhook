@@ -1,0 +1,22 @@
+{
+  "name": "prompt_injection_experiement_webhook",
+  "version": "1.0.0",
+  "description": "the webook and an okay UI to see what prompts are being shown for an experiement to see if I can do prompt injection",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umich2021/prompt_injection_experiement_webhook.git"
+  },
+  "keywords": [],
+  "author": "Jimson Yang",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/umich2021/prompt_injection_experiement_webhook/issues"
+  },
+  "homepage": "https://github.com/umich2021/prompt_injection_experiement_webhook#readme"
+}
