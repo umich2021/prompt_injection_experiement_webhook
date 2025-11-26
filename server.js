@@ -34,7 +34,19 @@ app.get('/log/:prompt', (req, res) => {
 app.get('/dashboard', (req, res) => {
   const logs = JSON.parse(fs.readFileSync(LOG_FILE));
   const rows = logs
-    .map(l => `<tr><td>${new Date(l.ts).toISOString()}</td><td>${l.prompt}</td></tr>`)
+    .map(l => {
+      const pstTime = new Date(l.ts).toLocaleString('en-US', {
+        timeZone: 'America/Los_Angeles',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+      return `<tr><td>${pstTime}</td><td>${l.prompt}</td><td>${l.favoriteBrand || ''}</td></tr>`;
+    })
     .join('');
 
   const html = `
