@@ -18,16 +18,16 @@ if (!fs.existsSync(LOG_FILE)) fs.writeFileSync(LOG_FILE, '[]');
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-// webhook endpoint
-app.post('/log', (req, res) => {
-  const { prompt } = req.body;
+// webhook endpoint 
+app.get('/log/:prompt', (req, res) => {
+  const prompt = req.params.prompt;  
   if (!prompt) return res.status(400).send('missing prompt');
 
   const logs = JSON.parse(fs.readFileSync(LOG_FILE));
   logs.push({ prompt, ts: Date.now() });
   fs.writeFileSync(LOG_FILE, JSON.stringify(logs, null, 2));
 
-  res.send('ok');
+  res.send(`logged prompt: "${prompt}"`);
 });
 
 // dashboard
